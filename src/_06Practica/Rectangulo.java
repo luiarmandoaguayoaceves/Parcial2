@@ -1,19 +1,20 @@
-package LineaRectaBresenham04;
+package _06Practica;
 
-import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import javax.swing.JFrame;
 
-public class LineaRecta extends JFrame{
+public class Rectangulo extends JFrame {
 
+    /**
+     * @param args the command line arguments
+     */
+    private BufferedImage fondo;
 
-    private BufferedImage buffer;
-    private Graphics graPixel;
-
-    public LineaRecta() {
+    public Rectangulo() {
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
         Dimension tamanioPanatalla = miPantalla.getScreenSize();
         int altoPantalla = tamanioPanatalla.height;
@@ -28,15 +29,26 @@ public class LineaRecta extends JFrame{
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
-        graPixel = buffer.createGraphics();
-        lineaBresenham(0, 100, 200, 100, buffer);
-        g.drawImage(buffer, 0, 0, this);
+        if (fondo == null) {
+            Graphics graPixel = null;
+            fondo = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+            graPixel = fondo.getGraphics();
+            graPixel.setColor(Color.green);
+            graPixel.fillRect(0, 0, getWidth(), getHeight());
+
+            dibujarRectangulo(50, 100, 60, 30, fondo);
+
+            g.drawImage(fondo, 0, 0, null);
+        } else {
+            g.drawImage(fondo, 0, 0, null);
+        }
     }
 
     public void lineaBresenham(int x0, int y0, int x1, int y1, BufferedImage bu) {
-        Color c = Color.BLUE;
-        int x = 0, y = 0, dX, dY, p, incE, incNE, stepsX, stepsY;
+        Color c = Color.red;
+        int x = 0, y = 0;
+        int dX = 0, dY = 0, p = 0;
+        int incE = 0, incNE = 0, stepsX = 0, stepsY = 0;
 
         dX = (x1 - x0);
         dY = (y1 - y0);
@@ -56,6 +68,7 @@ public class LineaRecta extends JFrame{
             y = y0;
             bu.setRGB(x, y, c.getRGB());
         }
+
         if (dX > dY) {
             p = 2 * dY - dX;
             incE = 2 * dY;
@@ -74,7 +87,7 @@ public class LineaRecta extends JFrame{
             p = 2 * dX - dY;
             incE = 2 * dX;
             incNE = 2 * (dX - dY);
-            while (y0 != y1) {
+            while (y != y1) {
                 y = y + stepsY;
                 if (p < 0) {
                     p = p + incE;
@@ -82,17 +95,23 @@ public class LineaRecta extends JFrame{
                     x = x + stepsX;
                     p = p + incNE;
                 }
+                bu.setRGB(x, y, c.getRGB());
             }
-            bu.setRGB(x, y, c.getRGB());
         }
+    }
 
+    public void dibujarRectangulo(int x, int y, int ancho, int largo, BufferedImage lienzo) {
+        lineaBresenham(x, y, x + ancho, y, lienzo);
+        lineaBresenham(x, y + largo, x + ancho, y + largo, lienzo);
+        lineaBresenham(x, y, x, y + largo, lienzo);
+        lineaBresenham(x + ancho, y, x + ancho, y + largo, lienzo);
     }
 
     public static void main(String[] args) {
         // TODO code application logic here
-        LineaRecta a = new LineaRecta();
-        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        a.setVisible(true);
+        Rectangulo as = new Rectangulo();
+        as.setVisible(true);
+        as.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 }

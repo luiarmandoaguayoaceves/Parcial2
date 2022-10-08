@@ -1,4 +1,4 @@
-package LineaDDARecta03;
+package _03Practica;
 
 
 import javax.swing.*;
@@ -10,12 +10,8 @@ public class LineaRecta extends JFrame {
     private Graphics graPixel;
 
     public LineaRecta(){
-        Toolkit miPantalla = Toolkit.getDefaultToolkit();//toma la dimencion de la pantalla
-        Dimension tamanioPantalla = miPantalla.getScreenSize();
-        int altoPantalla = tamanioPantalla.height;
-        int anchoPantalla = tamanioPantalla.width;
-        setSize(anchoPantalla/2, altoPantalla/2);
-        setLocation(anchoPantalla/4, altoPantalla/4);
+        setSize(400,400);
+        setLocation(100,100);
 
         setLayout(null);
     }
@@ -29,28 +25,23 @@ public class LineaRecta extends JFrame {
         g.drawImage(buffer, 0, 0, this);//variable g con metodo drawImage con el buffer valores default en este
     }
 
-    private void dibujaLinea(int x0, int y0, int x1, int y1, BufferedImage bu) {
+    private void dibujaLinea(int x0, int y0, int x1, int y1, BufferedImage buf) {
         Color c = Color.black;//Color del pixel
         int dX = x1 - x0;//inicializar variable
         int dY = y1 - y0;//inicializando variable
-        int step = 0;//paso
+        int inc = 0;//AIncrementable
 
         float xInc = 0, x = 0, y = 0;//inicializar valor flotante
-        if (Math.abs(dX) > Math.abs(dY)){
-            step = Math.abs(dX);
+        if (Math.abs(dX) > Math.abs(dY)){//comparar valores absolutos cual es mayor
+            inc = Math.abs(dX);//toma el valor absoluto mayor
         }else {
-            step = Math.abs(dY);
+            inc = Math.abs(dY);
         }
-
-        xInc = (float) dX / step;
-
-        x = x0;
-        y = y0;
-
-        bu.setRGB(Math.round(x), Math.round(y), c.getRGB());//Variable Bu con el metodo RGB pasando el parametro X, Y y getRGB
-        for (int i = 1; i <= step; i++) {
-            x += xInc;
-            bu.setRGB(Math.round(x), Math.round(y), c.getRGB());
+        xInc = (float) dX / inc;
+        buf.setRGB(Math.round(x0), Math.round(y0), c.getRGB());//Variable Bu con el metodo RGB pasando el parametro X, Y y getRGB
+        for (int i = 1; i <= inc; i++) {
+            x0 += xInc;
+            buf.setRGB(Math.round(x0), Math.round(y0), c.getRGB());
         }
     }
 
