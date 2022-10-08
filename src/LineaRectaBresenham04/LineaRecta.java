@@ -1,4 +1,4 @@
-package LineaRectaBresenham;
+package LineaRectaBresenham04;
 
 import javax.swing.JFrame;
 import java.awt.Color;
