@@ -27,8 +27,8 @@ public class linearecta extends JFrame {
         }
     }
     public static void main(String[] args) {
-        linearecta a = new linearecta();
-        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        a.setVisible(true);
+        linearecta linea = new linearecta();//crea objeto de tipo linea recta
+        linea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        linea.setVisible(true);
     }
 }
