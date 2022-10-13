@@ -1,10 +1,11 @@
 package _02Practica;
+//practica 1 mejorada
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 
-public class LineaMejorada extends JFrame {
+public class LineaMejorada extends JFrame {//clase
 
 
     private BufferedImage buffer;
@@ -28,11 +29,11 @@ public class LineaMejorada extends JFrame {
 
     public void dibujaLinea(int Xo, int Yo , int Xf, int Yf, BufferedImage buf) {
         Color c = Color.black;//Color
-        System.out.println("Xo:" + Xo + "\nXf:" + Xf + "\nYo:" + "\nYf:" + Yf);
+//        System.out.println("Xo:" + Xo + "\nXf:" + Xf + "\nYo:" + "\nYf:" + Yf);
         float ca = Float.max(Xo, Xf) - Float.min(Xo, Xf);//redondea el valor y lo resta mayor menos el menor
         float co =  Float.max(Yo, Yf) - Float.min(Yo, Yf);//redondea el valor y lo resta mayor menos el menor
         float hip = co / ca;//sacar la pendiente usando formula matematica
-        System.out.println("Adyasente: "+ ca + "\nOpuesto: " + co + "\nPendiente: " + hip);
+//        System.out.println("Adyasente: "+ ca + "\nOpuesto: " + co + "\nPendiente: " + hip);
         int sigX = 0;//Inicializar
         int sigY = 0;//Inicializar
         hip = Math.abs(hip);//valor absoluto (positivo)

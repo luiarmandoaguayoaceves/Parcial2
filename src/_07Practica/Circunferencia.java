@@ -1,4 +1,5 @@
 package _07Practica;
+//metodo matematico de la circunferencia
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,14 +14,8 @@ public class Circunferencia extends JFrame {
     private Graphics graPixel;
 
     public Circunferencia() {
-        Toolkit miPantalla = Toolkit.getDefaultToolkit();
-        Dimension tamanioPanatalla = miPantalla.getScreenSize();
-        int altoPantalla = tamanioPanatalla.height;
-        int anchoPantalla = tamanioPanatalla.width;
-
-        setSize(anchoPantalla / 2, altoPantalla / 2);
-        setLocation(anchoPantalla / 4, altoPantalla / 4);
-
+        setSize(400,400);
+        setLocation(100,100);
         setLayout(null);
     }
 

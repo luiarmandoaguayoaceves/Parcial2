@@ -1,5 +1,5 @@
 package _05Practica;
-
+//Algoritmo de punto medio
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -20,7 +20,7 @@ public class PuntoMedio extends JFrame {
         super.paint(g);
         buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
         graPixel = buffer.createGraphics();
-        lineaPuntoMedio(0, 100, 50, 200, buffer);
+        lineaPuntoMedio(100, 100, 50, 200, buffer);
         g.drawImage(buffer, 0, 0, this);
     }
 
@@ -31,7 +31,7 @@ public class PuntoMedio extends JFrame {
         p = 2 * dy - dx;
         incE = 2 * dy;
         incNE = 2 * (dy - dx);
-        /* determinar que punto usar para empezar, cual para terminar */
+
         if (x0 > x1) {
             x = x1;
             y = y1;
@@ -41,7 +41,7 @@ public class PuntoMedio extends JFrame {
             y = y0;
             xend = x1;
         }
-        /* se cicla hasta llegar al extremo de la línea */
+
         while (x <= xend) {
             b.setRGB(x, y, Color.black.getRGB());
             x = x + 1;

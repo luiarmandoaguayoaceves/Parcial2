@@ -1,4 +1,5 @@
 package _01Practica;
+//practica
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
@@ -27,8 +28,8 @@ public class linearecta extends JFrame {
         }
     }
     public static void main(String[] args) {
-        linearecta a = new linearecta();
-        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        a.setVisible(true);
+        linearecta linea = new linearecta();//crea objeto de la clase  linea recta
+        linea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//al objeto se le grega metodo para cerrar
+        linea.setVisible(true);//metodo para hacer visible
     }
 }

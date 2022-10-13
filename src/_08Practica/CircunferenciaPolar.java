@@ -1,5 +1,5 @@
 package _08Practica;
-
+//circunferencia coordfenada polares
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
@@ -7,26 +7,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-/**
- * @author lalo_
- */
 public class CircunferenciaPolar extends JFrame {
-
-    /**
-     * @param args the command line arguments
-     */
     private BufferedImage buffer;
     private Graphics graPixel;
 
     public CircunferenciaPolar() {
-        Toolkit miPantalla = Toolkit.getDefaultToolkit();
-        Dimension tamanioPanatalla = miPantalla.getScreenSize();
-        int altoPantalla = tamanioPanatalla.height;
-        int anchoPantalla = tamanioPanatalla.width;
-
-        setSize(anchoPantalla / 2, altoPantalla / 2);
-        setLocation(anchoPantalla / 4, altoPantalla / 4);
-
+        setSize(400,400);
+        setLocation(100,100);
         setLayout(null);
     }
 
@@ -49,7 +36,7 @@ public class CircunferenciaPolar extends JFrame {
         for (int i = 0; i < 360; i++) {
             x = (int) (xc + r * Math.cos(Math.toRadians(i)));
             y = (int) (yc + r * Math.sin(Math.toRadians(i)));
-            bu.setRGB(x, y, Color.green.getRGB());
+            bu.setRGB(x, y, Color.black.getRGB());
         }
     }
 

@@ -1,5 +1,5 @@
 package _03Practica;
-
+//Algoritmo DDA
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +21,7 @@ public class LineaRecta extends JFrame {
 //        The BufferedImage subclass describes an Image with an accessible buffer of image data. A BufferedImage is comprised of a ColorModel and a Raster of image data. The number and types of bands in the SampleModel of the Raster must match the number and types required by the ColorModel to represent its color and alpha components. All BufferedImage objects have an upper left corner coordinate of (0, 0). Any Raster used to construct a BufferedImage must therefore have minX=0 and minY=0.
         graPixel = buffer.createGraphics();//Metodo almacenado en variable
 
-        dibujaLinea(0, 100, 200, 100, buffer);//Metodo con 5 parametros
+        dibujaLinea(0, 100, 200, 300, buffer);//Metodo con 5 parametros
         g.drawImage(buffer, 0, 0, this);//variable g con metodo drawImage con el buffer valores default en este
     }
 
@@ -29,26 +29,26 @@ public class LineaRecta extends JFrame {
         Color c = Color.black;//Color del pixel
         int dX = x1 - x0;//inicializar variable
         int dY = y1 - y0;//inicializando variable
-        int inc = 0;//AIncrementable
+        int inc = 0;//Incrementable
 
         float xInc = 0, x = 0, y = 0;//inicializar valor flotante
         if (Math.abs(dX) > Math.abs(dY)){//comparar valores absolutos cual es mayor
             inc = Math.abs(dX);//toma el valor absoluto mayor
         }else {
-            inc = Math.abs(dY);
+            inc = Math.abs(dY);//valor absoluto de dY a incrementable
         }
-        xInc = (float) dX / inc;
+        xInc = (float) dX / inc;//almacenar el valor de incremento y dX en valor flotante
         buf.setRGB(Math.round(x0), Math.round(y0), c.getRGB());//Variable Bu con el metodo RGB pasando el parametro X, Y y getRGB
-        for (int i = 1; i <= inc; i++) {
-            x0 += xInc;
-            buf.setRGB(Math.round(x0), Math.round(y0), c.getRGB());
+        for (int i = 1; i <= inc; i++) {//mientras i sea menor que incremento
+            x0 += xInc;//sumale xIncremento a x0
+            buf.setRGB(Math.round(x0), Math.round(y0), c.getRGB());//pinta
         }
     }
 
 
     public static void main(String[] args) {
-        LineaRecta linea = new LineaRecta();
-        linea.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        linea.setVisible(true);
+        LineaRecta linea = new LineaRecta();//crea objeto
+        linea.setDefaultCloseOperation(EXIT_ON_CLOSE);//metodo de cerrar al objeto
+        linea.setVisible(true);//muesta ventana
     }
 }
